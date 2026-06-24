@@ -76,6 +76,43 @@
       filter: grayscale(1) contrast(0.9) brightness(0.5);
     }
 
+    /* Consent-gate voor Google Maps */
+    .map-gate {
+      width: 100%;
+      height: 260px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .map-gate-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .map-gate-icon {
+      width: 28px;
+      height: 28px;
+      opacity: 0.3;
+    }
+    .map-gate-loc {
+      font-family: var(--font-d);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .map-gate-note {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--text-dim);
+      max-width: 26ch;
+      line-height: 1.55;
+    }
+
     /* Formulier kolom */
     .form-intro .h-md { margin-top: 0.5rem; }
     .form-note {
@@ -206,13 +243,20 @@
           </p>
         </div>
 
-        <div class="map-wrap reveal d3">
-          <iframe
-            title="Locatie Bandit Ink — Guisweg 24, Zaandijk"
-            src="https://maps.google.com/maps?q=Guisweg+24,+1544+AJ+Zaandijk&output=embed&z=15"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+        <div class="map-wrap reveal d3" id="map-container">
+          <div class="map-gate" id="map-gate" role="region" aria-label="Kaart laden">
+            <div class="map-gate-inner">
+              <svg class="map-gate-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              <p class="map-gate-loc">Guisweg 24 · Zaandijk</p>
+              <p class="map-gate-note">Laad kaart via Google Maps (plaatst cookies)</p>
+              <button class="btn btn-outline" onclick="loadMap()" style="font-size:0.58rem;padding:0.65rem 1.5rem">
+                Kaart laden
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -318,6 +362,17 @@
 </footer>
 
 <script>
+  /* Kaart consent-gate */
+  function loadMap() {
+    const gate = document.getElementById('map-gate');
+    const iframe = document.createElement('iframe');
+    iframe.title = 'Locatie Bandit Ink — Guisweg 24, Zaandijk';
+    iframe.src = 'https://maps.google.com/maps?q=Guisweg+24,+1544+AJ+Zaandijk&output=embed&z=15';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.style.cssText = 'display:block;width:100%;height:260px;border:0;filter:grayscale(1) contrast(0.9) brightness(0.5)';
+    gate.replaceWith(iframe);
+  }
+
   /* Hamburger */
   const toggle  = document.getElementById('nav-toggle');
   const navList = document.getElementById('nav-links');
