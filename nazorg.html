@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nazorg — Bandit Ink Tattooshop Zaandijk</title>
+  <meta name="description" content="Nazorginstructies voor jouw tatoeage van Bandit Ink in Zaandijk. Hoe verzorg je je nieuwe tatoeage goed voor het beste en langst houdbare resultaat?">
+  <meta property="og:title" content="Nazorg — Bandit Ink">
+  <meta property="og:description" content="Alles wat je moet weten over de verzorging van je nieuwe tatoeage.">
+  <meta property="og:url" content="https://www.banditink.nl/nazorg.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="images/logo-bandit-ink.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── PAGINA-TOP ── */
+    .page-top {
+      padding-top: calc(4.5rem + clamp(4rem, 8vh, 6rem));
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .page-top .label { margin-bottom: 0.75rem; }
+    .page-top .intro {
+      margin-top: 1.25rem;
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      font-style: italic;
+      color: rgba(237,232,224,0.65);
+      max-width: 60ch;
+    }
+
+    /* ── NAZORG GRID ── */
+    #nazorg-content { background: var(--bg); }
+    .nazorg-grid {
+      display: grid;
+      grid-template-columns: 5fr 3fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    /* Blokken */
+    .nz-block { margin-bottom: 3rem; }
+    .nz-block:last-child { margin-bottom: 0; }
+    .nz-title {
+      font-family: var(--font-d);
+      font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nz-body { color: rgba(237,232,224,0.8); }
+    .nz-body p { margin-bottom: 0.75rem; }
+    .nz-body p:last-child { margin-bottom: 0; }
+
+    .nz-list {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .nz-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      font-size: clamp(1rem, 1.1vw, 1.1rem);
+      color: rgba(237,232,224,0.8);
+    }
+    .nz-list li::before {
+      content: '—';
+      font-family: var(--font-d);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      flex-shrink: 0;
+    }
+
+    /* Waarschuwingsbalk */
+    .nz-warn {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+      margin-top: 1rem;
+    }
+    .nz-warn p { font-size: 0.95rem; color: rgba(237,232,224,0.65); }
+
+    /* Sidebar kaarten */
+    .nz-sidebar { position: sticky; top: 5.5rem; }
+    .nz-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      margin-bottom: 1.25rem;
+    }
+    .nz-card:last-child { margin-bottom: 0; }
+    .nz-card-title {
+      font-family: var(--font-d);
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .nz-card p { font-size: 0.95rem; color: rgba(237,232,224,0.7); line-height: 1.65; }
+    .nz-card .btn { margin-top: 1.5rem; }
+
+    @media (max-width: 860px) {
+      .nazorg-grid { grid-template-columns: 1fr; }
+      .nz-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATIE ─────────────────────────────────────────── -->
+<nav class="nav solid" id="main-nav" aria-label="Hoofdnavigatie">
+  <a href="index.html" class="nav-brand" aria-label="Bandit Ink — homepage">
+    <img src="images/logo-bandit-ink.png" alt="" class="nav-logo-img" aria-hidden="true">
+    <span class="nav-brand-name">Bandit Ink.</span>
+  </a>
+  <ul class="nav-links" id="nav-links" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="artiesten.html">Artiesten</a></li>
+    <li><a href="index.html#werk">Portfolio</a></li>
+    <li><a href="nazorg.html" aria-current="page">Nazorg</a></li>
+    <li><a href="contact.html" class="nav-afspraak">Afspraak</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle"
+          aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGINA-HEADER ─────────────────────────────────────── -->
+<header class="page-top">
+  <div class="container">
+    <span class="label">Na je sessie</span>
+    <h1 class="h-lg">Nazorg</h1>
+    <p class="intro">Tijdens het tatoeëren beschadigt de huid, waardoor er een wond ontstaat. Als je de tatoeage goed verzorgt, duurt het ongeveer 6 weken tot de wond volledig genezen is.</p>
+  </div>
+</header>
+
+<!-- ── NAZORG INHOUD ─────────────────────────────────────── -->
+<main id="nazorg-content" aria-label="Nazorginstructies">
+  <div class="container">
+    <div class="nazorg-grid" style="padding-block: clamp(4rem, 8vw, 6rem)">
+
+      <!-- Hoofdtekst -->
+      <article aria-label="Stapsgewijze nazorginstructies">
+
+        <div class="nz-block reveal">
+          <h2 class="nz-title">Direct na de sessie — folie verwijderen</h2>
+          <div class="nz-body">
+            <p>Als de tatoeage is afgedekt, mag de folie na <strong>3 tot 5 uur</strong> worden verwijderd. Je kunt daarna gewoon douchen.</p>
+            <p>Verwijder de folie voorzichtig onder lauw stromend water om wrijving te voorkomen.</p>
+          </div>
+        </div>
+
+        <div class="nz-block reveal d1">
+          <h2 class="nz-title">Dagelijkse verzorging</h2>
+          <div class="nz-body">
+            <p>Volg onderstaande stappen twee keer per dag gedurende de geneestijd:</p>
+            <ul class="nz-list" role="list">
+              <li>Was de tatoeage 2× per dag met een milde, ongeparfumeerde zeep</li>
+              <li>Dep de tatoeage na het wassen droog met een schone handdoek — nooit wrijven</li>
+              <li>Smeer de wond minimaal 3 tot 4 keer per dag in met een geschikte zalf (bijv. Bepanthen of Tattoo Goo)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="nz-block reveal d1">
+          <h2 class="nz-title">Wat je moet vermijden</h2>
+          <div class="nz-body">
+            <p>Onderstaande handelingen vertragen de genezing en kunnen de kwaliteit van je tatoeage permanent beschadigen:</p>
+            <ul class="nz-list" role="list">
+              <li>Raak de wond zo min mogelijk aan — was eerst je handen voordat je verzorgt</li>
+              <li>Krab of pick niet aan de tatoeage, ook niet als hij begint te schilferen</li>
+              <li>Bedek de tatoeage niet met strakke of vervuilde kleding</li>
+              <li>Gebruik geen pleisters of verbanden over de wond</li>
+              <li>Vermijd jacuzzi's, bad, zwembad, sauna en stoombad gedurende <strong>6 weken</strong></li>
+              <li>Stel de tatoeagewond niet bloot aan direct zonlicht of de zonnebank</li>
+            </ul>
+            <div class="nz-warn" role="note" aria-label="Belangrijk: zonlicht">
+              <p><strong>Belangrijk:</strong> De getatoeëerde huid blijft ook na volledige genezing erg gevoelig voor zonlicht. Smeer je tatoeage daarna altijd in met zonnebrand (SPF 50+) bij blootstelling aan de zon.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nz-block reveal d2">
+          <h2 class="nz-title">Wanneer contact opnemen</h2>
+          <div class="nz-body">
+            <p>Enige roodheid en lichte zwelling direct na de sessie is normaal. Neem contact op als je tekenen van infectie ziet: aanhoudende extreme roodheid, warmte, pus of koorts.</p>
+            <p>
+              <a href="mailto:info@banditink.nl"
+                 style="border-bottom: 1px solid var(--border); transition: border-color 0.2s;"
+                 aria-label="E-mail info@banditink.nl">
+                info@banditink.nl
+              </a>
+              &nbsp;—&nbsp;
+              <a href="https://www.instagram.com/banditink_tattoostudio"
+                 target="_blank" rel="noopener noreferrer"
+                 style="border-bottom: 1px solid var(--border); transition: border-color 0.2s;"
+                 aria-label="Instagram Bandit Ink (opent nieuw tabblad)">
+                @banditink_tattoostudio
+              </a>
+            </p>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="nz-sidebar" aria-label="Samenvatting en contactinformatie">
+
+        <div class="nz-card reveal d2">
+          <p class="nz-card-title">Samenvatting</p>
+          <ul class="nz-list" style="margin-top:0" role="list">
+            <li>Folie na 3–5 uur verwijderen</li>
+            <li>2× per dag wassen + deppen</li>
+            <li>3–4× per dag insmeren met zalf</li>
+            <li>6 weken: geen bad, zwembad, sauna</li>
+            <li>Altijd SPF op genezen tatoeage</li>
+          </ul>
+        </div>
+
+        <div class="nz-card reveal d3">
+          <p class="nz-card-title">Nieuwe afspraak?</p>
+          <p>Laat eerst volledig genezen — wacht minimaal 6 weken voordat je een retouche of nieuw stuk plant.</p>
+          <a href="contact.html" class="btn btn-primary">Maak een afspraak</a>
+        </div>
+
+        <div class="nz-card reveal d3">
+          <p class="nz-card-title">Bandit Ink</p>
+          <p>Guisweg 24<br>1544 AJ Zaandijk<br>Uitsluitend op afspraak</p>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer aria-label="Footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="images/logo-bandit-ink.png" alt="Bandit Ink logo" class="footer-logo-img">
+          <span class="footer-brand-name">Bandit Ink.</span>
+        </div>
+        <p class="footer-tagline">"It takes time to make a piece of art"</p>
+        <address class="footer-addr">
+          Guisweg 24, 1544 AJ Zaandijk<br>
+          <a href="mailto:info@banditink.nl">info@banditink.nl</a>
+        </address>
+      </div>
+      <nav aria-label="Footer navigatie">
+        <p class="footer-col-title">Navigatie</p>
+        <ul class="footer-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="artiesten.html">Artiesten</a></li>
+          <li><a href="nazorg.html">Nazorg</a></li>
+          <li><a href="contact.html">Contact &amp; Afspraak</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-col-title">Social</p>
+        <ul class="footer-links" role="list">
+          <li><a href="https://www.instagram.com/banditink_tattoostudio" target="_blank" rel="noopener noreferrer">↗ @banditink_tattoostudio</a></li>
+          <li><a href="https://www.instagram.com/justinbenjamintattoo" target="_blank" rel="noopener noreferrer">↗ @justinbenjamintattoo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Bandit Ink. — All rights reserved</p>
+      <nav aria-label="Juridische links" style="display:flex;gap:1.5rem;flex-wrap:wrap">
+        <a href="privacybeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Privacybeleid</a>
+        <a href="cookiebeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Cookiebeleid</a>
+        <a href="algemene-voorwaarden.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Algemene voorwaarden</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Hamburger */
+  const toggle  = document.getElementById('nav-toggle');
+  const navList = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+  navList.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      navList.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menu openen');
+    })
+  );
+
+  /* Scroll reveal */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

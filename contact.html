@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Afspraak — Bandit Ink Tattooshop</title>
+  <meta name="description" content="Neem contact op met Bandit Ink in Zaandijk. Maak een afspraak via Instagram, e-mail of dit formulier. Guisweg 24, 1544 AJ Zaandijk. Uitsluitend op afspraak.">
+  <link rel="icon" type="image/png" href="images/logo-bandit-ink.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── PAGINA-TOP ── */
+    .page-top {
+      padding-top: calc(4.5rem + clamp(4rem, 8vh, 6rem));
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .page-top .label { margin-bottom: 0.75rem; }
+
+    /* ── CONTACT GRID ── */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(3rem, 7vw, 7rem);
+      align-items: start;
+    }
+
+    /* Info kolom */
+    .c-detail {
+      border-top: 1px solid var(--border);
+      padding-block: 1.35rem;
+    }
+    .c-detail:last-of-type { border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+    .c-lbl {
+      font-family: var(--font-d);
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.35rem;
+    }
+    .c-val { font-size: 1.05rem; color: var(--text); line-height: 1.65; }
+    .c-val a {
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .c-val a:hover { border-color: var(--text-muted); }
+    .c-val a:focus-visible { outline: 1px solid var(--text); }
+
+    .map-wrap { overflow: hidden; }
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 260px;
+      border: 0;
+      filter: grayscale(1) contrast(0.9) brightness(0.5);
+    }
+
+    /* Formulier kolom */
+    .form-intro .h-md { margin-top: 0.5rem; }
+    .form-note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-dim);
+    }
+    .form-body { margin-top: 2rem; }
+    .f-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .f-group { margin-bottom: 1.1rem; }
+    .f-group label {
+      display: block;
+      font-family: var(--font-d);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .f-group input,
+    .f-group textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 1.05rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .f-group input::placeholder,
+    .f-group textarea::placeholder { color: var(--text-dim); font-style: italic; }
+    .f-group input:focus,
+    .f-group textarea:focus { border-color: var(--text-muted); }
+    .f-group input:focus-visible,
+    .f-group textarea:focus-visible { outline: 2px solid var(--text); outline-offset: -1px; }
+    .f-group textarea { resize: vertical; min-height: 130px; }
+    .f-honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .f-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATIE ─────────────────────────────────────────── -->
+<nav class="nav solid" id="main-nav" aria-label="Hoofdnavigatie">
+  <a href="index.html" class="nav-brand" aria-label="Bandit Ink — homepage">
+    <img src="images/logo-bandit-ink.png" alt="" class="nav-logo-img" aria-hidden="true">
+    <span class="nav-brand-name">Bandit Ink.</span>
+  </a>
+  <ul class="nav-links" id="nav-links" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="artiesten.html">Artiesten</a></li>
+    <li><a href="index.html#werk">Portfolio</a></li>
+    <li><a href="nazorg.html">Nazorg</a></li>
+    <li><a href="contact.html" class="nav-afspraak" aria-current="page">Afspraak</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle"
+          aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGINA-HEADER ─────────────────────────────────────── -->
+<header class="page-top">
+  <div class="container">
+    <span class="label">Neem contact op</span>
+    <h1 class="h-lg">Contact &amp;<br>Afspraak</h1>
+  </div>
+</header>
+
+<!-- ── CONTACT ───────────────────────────────────────────── -->
+<section id="contact" aria-labelledby="contact-h">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Info -->
+      <div>
+        <h2 id="contact-h" class="h-md reveal" style="margin-bottom:2rem">Vind ons</h2>
+
+        <div class="c-detail reveal">
+          <p class="c-lbl">Adres</p>
+          <address class="c-val">
+            Guisweg 24<br>1544 AJ Zaandijk
+          </address>
+        </div>
+        <div class="c-detail reveal d1">
+          <p class="c-lbl">E-mail</p>
+          <p class="c-val"><a href="mailto:info@banditink.nl">info@banditink.nl</a></p>
+        </div>
+        <div class="c-detail reveal d1">
+          <p class="c-lbl">Instagram</p>
+          <p class="c-val">
+            <a href="https://www.instagram.com/banditink_tattoostudio"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Instagram van Bandit Ink (opent nieuw tabblad)">
+              @banditink_tattoostudio
+            </a>
+          </p>
+        </div>
+        <div class="c-detail reveal d2">
+          <p class="c-lbl">Openingstijden</p>
+          <p class="c-val">
+            Maandag t/m zondag<br>
+            <span style="color:var(--text-muted); font-size:0.95rem">Uitsluitend op afspraak</span>
+          </p>
+        </div>
+
+        <div class="map-wrap reveal d3">
+          <iframe
+            title="Locatie Bandit Ink — Guisweg 24, Zaandijk"
+            src="https://maps.google.com/maps?q=Guisweg+24,+1544+AJ+Zaandijk&output=embed&z=15"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Formulier -->
+      <div>
+        <div class="form-intro reveal">
+          <span class="label">Stuur een bericht</span>
+          <h2 class="h-md">Jouw idee,<br>ons ontwerp</h2>
+          <p class="form-note">Voor een afspraak kun je ook direct een berichtje sturen via Instagram of e-mail.</p>
+        </div>
+
+        <form class="form-body" action="mailto:info@banditink.nl" method="post" enctype="text/plain"
+              aria-label="Contactformulier Bandit Ink">
+
+          <!-- Honeypot anti-spam -->
+          <div aria-hidden="true">
+            <label class="f-honeypot" for="website">Website (niet invullen)</label>
+            <input class="f-honeypot" type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="f-row">
+            <div class="f-group reveal d1">
+              <label for="naam">Naam *</label>
+              <input type="text" id="naam" name="naam" required
+                     autocomplete="given-name" placeholder="Jouw naam">
+            </div>
+            <div class="f-group reveal d1">
+              <label for="email">E-mailadres *</label>
+              <input type="email" id="email" name="email" required
+                     autocomplete="email" placeholder="jouw@email.nl">
+            </div>
+          </div>
+
+          <div class="f-group reveal d2">
+            <label for="plek">Plek op het lichaam</label>
+            <input type="text" id="plek" name="plek"
+                   placeholder="Bijv. onderarm links, rug, kuit…">
+          </div>
+
+          <div class="f-group reveal d2">
+            <label for="stijl">Stijlvoorkeur</label>
+            <input type="text" id="stijl" name="stijl"
+                   placeholder="Black & Grey, Fineline, anders…">
+          </div>
+
+          <div class="f-group reveal d3">
+            <label for="bericht">Jouw idee *</label>
+            <textarea id="bericht" name="bericht" required
+                      placeholder="Beschrijf je tattoo-idee zo concreet mogelijk — grootte, sfeer, referenties of een omschrijving…"></textarea>
+          </div>
+
+          <div class="reveal d3">
+            <button type="submit" class="btn btn-primary">Verstuur bericht</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer aria-label="Footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="images/logo-bandit-ink.png" alt="Bandit Ink logo" class="footer-logo-img">
+          <span class="footer-brand-name">Bandit Ink.</span>
+        </div>
+        <p class="footer-tagline">"It takes time to make a piece of art"</p>
+        <address class="footer-addr">
+          Guisweg 24, 1544 AJ Zaandijk<br>
+          <a href="mailto:info@banditink.nl">info@banditink.nl</a>
+        </address>
+      </div>
+      <nav aria-label="Footer navigatie">
+        <p class="footer-col-title">Navigatie</p>
+        <ul class="footer-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="artiesten.html">Artiesten</a></li>
+          <li><a href="nazorg.html">Nazorg</a></li>
+          <li><a href="contact.html">Contact &amp; Afspraak</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-col-title">Social</p>
+        <ul class="footer-links" role="list">
+          <li><a href="https://www.instagram.com/banditink_tattoostudio" target="_blank" rel="noopener noreferrer">↗ @banditink_tattoostudio</a></li>
+          <li><a href="https://www.instagram.com/justinbenjamintattoo" target="_blank" rel="noopener noreferrer">↗ @justinbenjamintattoo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Bandit Ink. — All rights reserved</p>
+      <nav aria-label="Juridische links" style="display:flex;gap:1.5rem;flex-wrap:wrap">
+        <a href="privacybeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Privacybeleid</a>
+        <a href="cookiebeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Cookiebeleid</a>
+        <a href="algemene-voorwaarden.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Algemene voorwaarden</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Hamburger */
+  const toggle  = document.getElementById('nav-toggle');
+  const navList = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+  navList.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      navList.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menu openen');
+    })
+  );
+
+  /* Scroll reveal */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

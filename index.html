@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bandit Ink — Privé Tattooshop in Zaandijk</title>
+  <meta name="description" content="Privé tattooshop in Zaandijk (Zaanstad), dichtbij Zaandam en Amsterdam. Black & Grey en Fineline tatoeages op maat. Uitsluitend op afspraak. Opgericht 2013.">
+  <meta property="og:title" content="Bandit Ink — Privé Tattooshop Zaandijk">
+  <meta property="og:description" content="Privé tattooshop opgericht in 2013. Vakmanschap in Black & Grey en Fineline. Uitsluitend op afspraak.">
+  <meta property="og:image" content="images/tattoo-justin-working.png">
+  <meta property="og:url" content="https://www.banditink.nl">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="images/logo-bandit-ink.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/tattoo-justin-working.png');
+      background-size: cover;
+      background-position: center center;
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      /* Links donker voor tekstleesbaarheid + verticale gradiënt */
+      background:
+        linear-gradient(
+          to right,
+          rgba(10,10,10,0.72) 0%,
+          rgba(10,10,10,0.30) 55%,
+          rgba(10,10,10,0.08) 100%
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(10,10,10,0.72) 0%,
+          rgba(10,10,10,0.06) 40%,
+          rgba(10,10,10,0.60) 70%,
+          rgba(10,10,10,0.94) 100%
+        );
+    }
+    .hero-content {
+      position: relative;
+      /* Padding-top garandeert dat tekst nooit achter de vaste nav verdwijnt */
+      padding: clamp(5rem, 11vh, 8rem) var(--px) clamp(3rem, 7vh, 5rem);
+      max-width: min(92%, 960px);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-d);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(237,232,224,0.6);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 0.65s 0.25s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .hero-title {
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 6.5vw, 6.5rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.85s 0.42s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .hero-tagline {
+      font-family: var(--font-b);
+      font-size: clamp(1rem, 1.8vw, 1.35rem);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(237,232,224,0.58);
+      margin-bottom: 2.75rem;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 0.65s 0.62s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .hero .btn {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp 0.65s 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── OVER ── */
+    #over { background: var(--bg); }
+    .over-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: center;
+    }
+    .over-body {
+      margin-top: 2rem;
+      color: rgba(237,232,224,0.78);
+      max-width: 54ch;
+    }
+    .over-cta { margin-top: 2.5rem; }
+    .over-img-wrap { position: relative; }
+    .over-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center;
+    }
+    /* Hairline accent box */
+    .over-img-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      right: -1.5rem;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      border: 1px solid var(--border);
+      z-index: -1;
+    }
+    @media (max-width: 860px) {
+      .over-grid { grid-template-columns: 1fr; }
+      .over-img-wrap::before { display: none; }
+      .over-img { aspect-ratio: 4 / 3; }
+    }
+
+    /* ── PORTFOLIO TEASER ── */
+    #werk { background: var(--surface); }
+    .werk-grid {
+      display: grid;
+      grid-template-columns: 5fr 4fr 4fr;
+      gap: 3px;
+      margin-top: clamp(2rem, 4vw, 3rem);
+    }
+    .werk-item { overflow: hidden; background: var(--surface-2); }
+    .werk-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 3 / 4;
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
+    }
+    .werk-item:hover img { transform: scale(1.04); }
+    .werk-item:first-child img { aspect-ratio: 4 / 5; }
+    .werk-cta { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    @media (max-width: 760px) {
+      .werk-grid { grid-template-columns: 1fr 1fr; }
+      .werk-item:first-child img, .werk-item img { aspect-ratio: 1; }
+    }
+
+    /* ── WERKWIJZE ── */
+    #werkwijze { background: var(--bg); }
+    .ww-grid {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .ww-step {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.75rem;
+      align-items: start;
+      padding-block: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .ww-step:last-child { border-bottom: 1px solid var(--border); }
+    .ww-num {
+      font-family: var(--font-d);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--border-2);
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+    }
+    .ww-title {
+      font-family: var(--font-d);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .ww-body {
+      font-size: 1rem;
+      color: rgba(237,232,224,0.7);
+    }
+    .ww-img-wrap { position: sticky; top: 5.5rem; }
+    .ww-img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+
+    @media (max-width: 860px) {
+      .ww-grid { grid-template-columns: 1fr; }
+      .ww-img-wrap { display: none; }
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding-block: clamp(3rem, 6vw, 4.5rem);
+    }
+    .cta-strip .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .cta-strip-text .h-md { margin-top: 0.5rem; }
+    .cta-strip-text p { margin-top: 0.75rem; max-width: 50ch; color: rgba(237,232,224,0.65); font-size: 1rem; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Bandit Ink",
+    "url": "https://www.banditink.nl",
+    "image": "https://www.banditink.nl/images/tattoo-justin-working.png",
+    "description": "Privé tattooshop in Zaandijk (Zaanstad), opgericht in 2013. Vakmanschap in Black & Grey en Fineline tatoeages op maat. Uitsluitend op afspraak.",
+    "foundingDate": "2013",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Guisweg 24",
+      "postalCode": "1544 AJ",
+      "addressLocality": "Zaandijk",
+      "addressRegion": "Noord-Holland",
+      "addressCountry": "NL"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 52.4730, "longitude": 4.8166 },
+    "email": "info@banditink.nl",
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "description": "Uitsluitend op afspraak"
+    }],
+    "sameAs": [
+      "https://www.instagram.com/banditink_tattoostudio",
+      "https://www.instagram.com/justinbenjamintattoo",
+      "https://www.instagram.com/tattoobandit"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ── NAVIGATIE ─────────────────────────────────────────── -->
+<nav class="nav" id="main-nav" aria-label="Hoofdnavigatie">
+  <a href="index.html" class="nav-brand" aria-label="Bandit Ink — homepage">
+    <img src="images/logo-bandit-ink.png" alt="" class="nav-logo-img" aria-hidden="true">
+    <span class="nav-brand-name">Bandit Ink.</span>
+  </a>
+  <ul class="nav-links" id="nav-links" role="list">
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="artiesten.html">Artiesten</a></li>
+    <li><a href="#werk">Portfolio</a></li>
+    <li><a href="nazorg.html">Nazorg</a></li>
+    <li><a href="contact.html" class="nav-afspraak">Afspraak</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle"
+          aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section id="home" class="hero" aria-label="Home Bandit Ink">
+  <div class="hero-bg" id="hero-bg"
+       role="img"
+       aria-label="Justin Benjamin tatoeëert in de Bandit Ink studio — gefocust aan het werk">
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Privé Tattooshop · Zaandijk · Opgericht 2013</p>
+    <h1 class="hero-title">Welkom bij<br>Bandit Ink.</h1>
+    <p class="hero-tagline">"It takes time to make a piece of art"</p>
+    <a href="contact.html" class="btn btn-primary">Maak een afspraak</a>
+  </div>
+</section>
+
+<!-- ── STATS BAR ─────────────────────────────────────────── -->
+<div class="stats-bar" aria-label="Bandit Ink in cijfers" role="region">
+  <div class="stat-item">
+    <span class="stat-num">4,9 ★</span>
+    <span class="stat-lbl">beoordeling</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">4000+</span>
+    <span class="stat-lbl">tevreden klanten</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">2013</span>
+    <span class="stat-lbl">opgericht</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">11.347</span>
+    <span class="stat-lbl">kopjes koffie geserveerd</span>
+  </div>
+</div>
+
+<!-- ── OVER ──────────────────────────────────────────────── -->
+<section id="over" aria-labelledby="over-h">
+  <div class="container">
+    <div class="over-grid">
+      <div>
+        <span class="label reveal">Over de shop</span>
+        <h2 id="over-h" class="h-lg reveal d1" style="margin-top:0.75rem">
+          Vakmanschap<br>in een rustige<br>omgeving
+        </h2>
+        <div class="over-body reveal d2">
+          <p>Bandit Ink is een privé tattooshop, opgericht in 2013 in Zaandam door Tattoo Bandit. We zitten in een mooi pand in Zaandijk (Zaanstad). Sinds december 2023 is Justin de nieuwe eigenaar.</p>
+          <p>De rustige huiskamersfeer zorgt dat jij je volledig kunt concentreren op het getatoeëerd worden, terwijl de artiest met volle aandacht aan jouw stuk werkt. We werken jouw idee uit tot een uniek, eigen ontwerp. Op afspraak, met een aanbetaling zodra de afspraak gemaakt wordt.</p>
+        </div>
+        <div class="over-cta reveal d3">
+          <a href="artiesten.html" class="btn btn-outline">Ontmoet de artiesten</a>
+        </div>
+      </div>
+      <div class="over-img-wrap reveal d3">
+        <img class="over-img"
+             src="images/tattoo-marylin.png"
+             alt="Gedetailleerde Black & Grey realism tatoeage — vakmanschap van Bandit Ink"
+             loading="lazy" width="600" height="800">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WERK / PORTFOLIO TEASER ───────────────────────────── -->
+<section id="werk" aria-labelledby="werk-h">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Het werk</span>
+      <h2 id="werk-h" class="h-lg">Portfolio</h2>
+    </div>
+
+    <div class="werk-grid" role="list" aria-label="Selectie uit het portfolio">
+      <div class="werk-item reveal" role="listitem">
+        <img src="images/tattoo-tiger-elephant.png"
+             alt="Black & Grey realism: tijger en olifant op het kuit"
+             loading="lazy" width="500" height="625">
+      </div>
+      <div class="werk-item reveal d1" role="listitem">
+        <img src="images/tattoo-catrina.png"
+             alt="Black & Grey tatoeage: Catrina portret met roos op de onderarm"
+             loading="lazy" width="400" height="500">
+      </div>
+      <div class="werk-item reveal d2" role="listitem">
+        <img src="images/tattoo-cheetah.png"
+             alt="Black & Grey tatoeage: tijger met geometrisch patroon op het bovenbeen"
+             loading="lazy" width="400" height="500">
+      </div>
+    </div>
+
+    <div class="werk-cta reveal d2">
+      <a href="https://www.instagram.com/banditink_tattoostudio"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-outline"
+         aria-label="Meer werk op Instagram van Bandit Ink (opent nieuw tabblad)">
+        Bekijk meer op Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WERKWIJZE ─────────────────────────────────────────── -->
+<section id="werkwijze" aria-labelledby="ww-h">
+  <div class="container">
+    <div class="ww-grid">
+      <div>
+        <div class="section-header reveal">
+          <span class="label">Hoe het werkt</span>
+          <h2 id="ww-h" class="h-lg">Van idee<br>naar huid</h2>
+        </div>
+        <ol aria-label="Stappen van het tatoeageproces">
+          <li class="ww-step reveal">
+            <span class="ww-num" aria-hidden="true">01</span>
+            <div>
+              <p class="ww-title">Stuur je idee</p>
+              <p class="ww-body">Deel je inspiratie, het gewenste lichaamsdeel en een omschrijving. Via Instagram of e-mail.</p>
+            </div>
+          </li>
+          <li class="ww-step reveal d1">
+            <span class="ww-num" aria-hidden="true">02</span>
+            <div>
+              <p class="ww-title">Uniek ontwerp</p>
+              <p class="ww-body">We werken jouw idee uit tot een eigen Bandit Ink-ontwerp. Geen kopie — altijd een origineel.</p>
+            </div>
+          </li>
+          <li class="ww-step reveal d2">
+            <span class="ww-num" aria-hidden="true">03</span>
+            <div>
+              <p class="ww-title">Afspraak &amp; aanbetaling</p>
+              <p class="ww-body">Datum vastprikken en een aanbetaling voldoen. Zo is jouw plek zeker.</p>
+            </div>
+          </li>
+          <li class="ww-step reveal d3">
+            <span class="ww-num" aria-hidden="true">04</span>
+            <div>
+              <p class="ww-title">Rustige sessie</p>
+              <p class="ww-body">Alle aandacht voor jouw stuk — geen drukte, geen haast. Koffie staat klaar.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <aside class="ww-img-wrap reveal d2" aria-hidden="true">
+        <img class="ww-img"
+             src="images/tattoo-justin-working.png"
+             alt=""
+             loading="lazy" width="500" height="667">
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ── NAZORG STRIP ───────────────────────────────────────── -->
+<div class="cta-strip" aria-label="Nazorg informatie">
+  <div class="container">
+    <div class="cta-strip-text reveal">
+      <span class="label">Na je sessie</span>
+      <h2 class="h-md">Nazorg</h2>
+      <p>Goede verzorging na je tatoeage is bepalend voor het resultaat. Lees onze volledige nazorg-instructies.</p>
+    </div>
+    <a href="nazorg.html" class="btn btn-outline reveal d2">Lees de nazorg-instructies</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer aria-label="Footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="images/logo-bandit-ink.png" alt="Bandit Ink logo" class="footer-logo-img">
+          <span class="footer-brand-name">Bandit Ink.</span>
+        </div>
+        <p class="footer-tagline">"It takes time to make a piece of art"</p>
+        <address class="footer-addr">
+          Guisweg 24, 1544 AJ Zaandijk<br>
+          <a href="mailto:info@banditink.nl">info@banditink.nl</a>
+        </address>
+      </div>
+      <nav aria-label="Footer navigatie">
+        <p class="footer-col-title">Navigatie</p>
+        <ul class="footer-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="artiesten.html">Artiesten</a></li>
+          <li><a href="nazorg.html">Nazorg</a></li>
+          <li><a href="contact.html">Contact &amp; Afspraak</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-col-title">Social</p>
+        <ul class="footer-links" role="list">
+          <li><a href="https://www.instagram.com/banditink_tattoostudio" target="_blank" rel="noopener noreferrer" aria-label="Instagram Bandit Ink Studio (opent nieuw tabblad)">↗ @banditink_tattoostudio</a></li>
+          <li><a href="https://www.instagram.com/justinbenjamintattoo" target="_blank" rel="noopener noreferrer" aria-label="Instagram Justin Benjamin (opent nieuw tabblad)">↗ @justinbenjamintattoo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Bandit Ink. — All rights reserved</p>
+      <nav aria-label="Juridische links" style="display:flex;gap:1.5rem;flex-wrap:wrap">
+        <a href="privacybeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Privacybeleid</a>
+        <a href="cookiebeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Cookiebeleid</a>
+        <a href="algemene-voorwaarden.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Algemene voorwaarden</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Nav: scroll → donkerder */
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('solid', window.scrollY > 80);
+  }, { passive: true });
+
+  /* Hamburger */
+  const toggle  = document.getElementById('nav-toggle');
+  const navList = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+  navList.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      navList.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menu openen');
+    })
+  );
+
+  /* Subtiele hero parallax */
+  const heroBg = document.getElementById('hero-bg');
+  if (heroBg && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.2)
+        heroBg.style.transform = `scale(1.06) translateY(${y * 0.15}px)`;
+    }, { passive: true });
+  }
+
+  /* Scroll reveal */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

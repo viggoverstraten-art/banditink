@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artiesten — Bandit Ink Tattooshop</title>
+  <meta name="description" content="Ontmoet de artiesten van Bandit Ink: Justin Benjamin (Black & Grey) en Tattoo Bandit (Fineline). Privé tattooshop in Zaandijk.">
+  <link rel="icon" type="image/png" href="images/logo-bandit-ink.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── PAGINA-HERO ── */
+    .page-top {
+      padding-top: calc(4.5rem + clamp(4rem, 8vh, 6rem));
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .page-top .label { margin-bottom: 0.75rem; }
+    .page-top .page-intro {
+      margin-top: 1.25rem;
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      font-style: italic;
+      color: rgba(237,232,224,0.65);
+      max-width: 58ch;
+    }
+
+    /* ── ARTIESTEN ── */
+    #artiesten { background: var(--bg); padding-block: 0; }
+    #artiesten .container { padding-block: clamp(3rem, 6vw, 5rem); }
+
+    /* PTK In memoriam — subtiele markering, dezelfde kaartgrootte */
+    .artist-card.memoriam .artist-img-wrap { position: relative; }
+    .artist-card.memoriam .artist-img-wrap::after {
+      content: 'In memoriam';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.6rem 1rem;
+      background: rgba(10,10,10,0.75);
+      font-family: var(--font-d);
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding-block: clamp(3rem, 6vw, 4.5rem);
+    }
+    .cta-strip .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .cta-strip-text .h-md { margin-top: 0.5rem; }
+    .cta-strip-text p { margin-top: 0.75rem; max-width: 50ch; color: rgba(237,232,224,0.65); font-size: 1rem; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATIE ─────────────────────────────────────────── -->
+<nav class="nav solid" id="main-nav" aria-label="Hoofdnavigatie">
+  <a href="index.html" class="nav-brand" aria-label="Bandit Ink — homepage">
+    <img src="images/logo-bandit-ink.png" alt="" class="nav-logo-img" aria-hidden="true">
+    <span class="nav-brand-name">Bandit Ink.</span>
+  </a>
+  <ul class="nav-links" id="nav-links" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="artiesten.html" aria-current="page">Artiesten</a></li>
+    <li><a href="index.html#werk">Portfolio</a></li>
+    <li><a href="nazorg.html">Nazorg</a></li>
+    <li><a href="contact.html" class="nav-afspraak">Afspraak</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle"
+          aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGINA-HEADER ─────────────────────────────────────── -->
+<header class="page-top">
+  <div class="container">
+    <span class="label">De artiesten</span>
+    <h1 class="h-lg">Het werk<br>achter de naald</h1>
+    <p class="page-intro">Twee gespecialiseerde artiesten, elk met een eigen signatuur. Black & Grey realism en Fineline — op afspraak in Zaandijk.</p>
+  </div>
+</header>
+
+<!-- ── ARTIESTEN ─────────────────────────────────────────── -->
+<main id="artiesten" aria-label="Artiestenprofielen">
+  <div class="container">
+
+    <!-- ── Justin Benjamin ── -->
+    <article class="artist-card reveal" aria-label="Justin Benjamin">
+      <div class="artist-img-wrap">
+        <img class="artist-img"
+             src="images/artist-justin.png"
+             alt="Justin Benjamin, eigenaar en Black & Grey artiest bij Bandit Ink"
+             loading="eager" width="600" height="800">
+      </div>
+      <div class="artist-info">
+        <p class="artist-stijl">Black &amp; Grey Realism</p>
+        <h2 class="artist-naam">Justin<br>Benjamin</h2>
+        <p class="artist-bio">Eigenaar van Bandit Ink sinds december 2023. Justin is gespecialiseerd in Black & Grey realism — met bijzondere aandacht voor diepte, contrast en de details die een stuk tot leven brengen.</p>
+        <p class="artist-bio">Van portretten tot composities op maat: elk stuk wordt uitgewerkt als een uniek origineel.</p>
+        <a href="https://www.instagram.com/justinbenjamintattoo"
+           target="_blank" rel="noopener noreferrer"
+           class="artist-ig"
+           aria-label="Portfolio van Justin Benjamin op Instagram (opent nieuw tabblad)">
+          ↗ @justinbenjamintattoo
+        </a>
+      </div>
+    </article>
+
+    <!-- ── Tattoo Bandit ── -->
+    <article class="artist-card flip reveal" aria-label="Tattoo Bandit">
+      <div class="artist-img-wrap">
+        <img class="artist-img"
+             src="images/artist-tattoo-bandit.png"
+             alt="Tattoo Bandit, oprichter en Fineline artiest bij Bandit Ink"
+             loading="lazy" width="600" height="800">
+      </div>
+      <div class="artist-info">
+        <p class="artist-stijl">Fineline</p>
+        <h2 class="artist-naam">Tattoo<br>Bandit</h2>
+        <p class="artist-bio">Oprichter van Bandit Ink (2013) en de artiest achter de naam. Tattoo Bandit is gespecialiseerd in Fineline — strakke, verfijnde lijnen, tijdloze composities en een precisie die bij elk formaat opvalt.</p>
+        <a href="https://www.instagram.com/tattoobandit"
+           target="_blank" rel="noopener noreferrer"
+           class="artist-ig"
+           aria-label="Portfolio van Tattoo Bandit op Instagram (opent nieuw tabblad)">
+          ↗ @tattoobandit
+        </a>
+      </div>
+    </article>
+
+    <!-- ── PTK — In memoriam ── -->
+    <article class="artist-card memoriam reveal" aria-label="PTK — In memoriam">
+      <div class="artist-img-wrap">
+        <img class="artist-img memorial"
+             src="images/artist-PTK.png"
+             alt="Portret van PTK, leerling bij Bandit Ink — in memoriam 30 juni 2019"
+             loading="lazy" width="600" height="800">
+      </div>
+      <div class="artist-info">
+        <span class="artist-memoriam-badge">In memoriam</span>
+        <p class="artist-stijl">Leerling</p>
+        <h2 class="artist-naam dim">PTK</h2>
+        <p class="artist-bio" style="color:rgba(237,232,224,0.5)">
+          PTK was leerling bij Bandit Ink en een getalenteerd persoon die we te vroeg zijn verloren.<br>
+          <span style="font-style:italic; font-size:0.95rem;">30 juni 2019</span>
+        </p>
+        <a href="https://www.instagram.com/ptk666"
+           target="_blank" rel="noopener noreferrer"
+           class="artist-ig"
+           style="opacity:0.55"
+           aria-label="Instagram pagina van PTK (opent nieuw tabblad)">
+          ↗ @ptk666
+        </a>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<!-- ── CTA STRIP ─────────────────────────────────────────── -->
+<div class="cta-strip" aria-label="Afspraak maken">
+  <div class="container">
+    <div class="cta-strip-text reveal">
+      <span class="label">Klaar om te beginnen?</span>
+      <h2 class="h-md">Maak een afspraak</h2>
+      <p>Neem contact op via Instagram of e-mail om je idee te bespreken en een datum vast te prikken.</p>
+    </div>
+    <a href="contact.html" class="btn btn-primary reveal d2">Neem contact op</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer aria-label="Footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="images/logo-bandit-ink.png" alt="Bandit Ink logo" class="footer-logo-img">
+          <span class="footer-brand-name">Bandit Ink.</span>
+        </div>
+        <p class="footer-tagline">"It takes time to make a piece of art"</p>
+        <address class="footer-addr">
+          Guisweg 24, 1544 AJ Zaandijk<br>
+          <a href="mailto:info@banditink.nl">info@banditink.nl</a>
+        </address>
+      </div>
+      <nav aria-label="Footer navigatie">
+        <p class="footer-col-title">Navigatie</p>
+        <ul class="footer-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="artiesten.html">Artiesten</a></li>
+          <li><a href="nazorg.html">Nazorg</a></li>
+          <li><a href="contact.html">Contact &amp; Afspraak</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-col-title">Social</p>
+        <ul class="footer-links" role="list">
+          <li><a href="https://www.instagram.com/banditink_tattoostudio" target="_blank" rel="noopener noreferrer">↗ @banditink_tattoostudio</a></li>
+          <li><a href="https://www.instagram.com/justinbenjamintattoo" target="_blank" rel="noopener noreferrer">↗ @justinbenjamintattoo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Bandit Ink. — All rights reserved</p>
+      <nav aria-label="Juridische links" style="display:flex;gap:1.5rem;flex-wrap:wrap">
+        <a href="privacybeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Privacybeleid</a>
+        <a href="cookiebeleid.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Cookiebeleid</a>
+        <a href="algemene-voorwaarden.html" class="footer-copy" style="color:var(--text-dim);border-bottom:1px solid var(--border);transition:border-color 0.2s">Algemene voorwaarden</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Hamburger */
+  const toggle  = document.getElementById('nav-toggle');
+  const navList = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+  navList.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      navList.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menu openen');
+    })
+  );
+
+  /* Scroll reveal */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

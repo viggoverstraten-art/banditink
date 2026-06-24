@@ -1,0 +1,492 @@
+/* ═══════════════════════════════════════════════════════════
+   BANDIT INK — Gedeelde stylesheet
+   Chakra Petch (headings) + Cormorant Garamond (body)
+   Palette: #0E0E0E bg · #EDE8E0 text · #7B2D26 accent
+═══════════════════════════════════════════════════════════ */
+
+/* ─── TOKENS ──────────────────────────────────────────────── */
+:root {
+  --bg:          #0E0E0E;
+  --surface:     #141414;
+  --surface-2:   #1C1C1C;
+  --border:      #272727;
+  --border-2:    #363636;
+  --text:        #EDE8E0;
+  --text-muted:  #999;
+  --text-dim:    #555;
+  --accent:      #7B2D26;
+  --accent-h:    #973528;
+  --font-d:      'Chakra Petch', monospace;
+  --font-b:      'Cormorant Garamond', Georgia, serif;
+  --max-w:       1280px;
+  --px:          clamp(1.5rem, 5vw, 5rem);
+}
+
+/* ─── RESET ───────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: clamp(1.05rem, 1vw + 0.7rem, 1.2rem);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+img  { display: block; max-width: 100%; height: auto; }
+a    { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+ul, ol { list-style: none; }
+p + p  { margin-top: 0.9em; }
+address { font-style: normal; }
+
+/* ─── GRAIN OVERLAY ───────────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23g)' opacity='0.07'/%3E%3C/svg%3E");
+}
+
+/* ─── LAYOUT ──────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--px);
+}
+
+/* ─── TYPOGRAFIE-HELPERS ──────────────────────────────────── */
+.label {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.h-xl {
+  font-family: var(--font-d);
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.h-lg {
+  font-family: var(--font-d);
+  font-size: clamp(2.25rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+.h-md {
+  font-family: var(--font-d);
+  font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.h-sm {
+  font-family: var(--font-d);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── KNOPPEN ─────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-d);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
+}
+.btn-primary { background: var(--accent); color: var(--text); }
+.btn-primary:hover { background: var(--accent-h); transform: translateY(-2px); }
+.btn-outline { border: 1px solid var(--border-2); color: var(--text-muted); }
+.btn-outline:hover { border-color: var(--text-muted); color: var(--text); }
+.btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+/* ─── NAVIGATIE ───────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem var(--px);
+  /* Altijd licht donker — leesbaarheid boven elke foto */
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s, border-color 0.3s;
+}
+.nav.solid {
+  background: rgba(10, 10, 10, 0.97);
+  border-color: var(--border);
+}
+
+/* Logo-merk: afbeelding + tekst gecombineerd */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  /* Wit logo op transparant — filter voor leesbaarheid */
+  filter: brightness(0) invert(1);
+}
+.nav-brand-name {
+  font-family: var(--font-d);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* Navigatielinks */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.nav-links a {
+  font-family: var(--font-d);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);          /* Volledig wit — altijd leesbaar */
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 0.65; }
+.nav-links a[aria-current="page"] {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+.nav-links a:focus-visible { outline: 1px solid var(--text); outline-offset: 4px; }
+
+/* Afspraak-knop in nav */
+.nav-afspraak {
+  padding: 0.5rem 1.4rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--text) !important;
+  opacity: 1 !important;
+  transition: border-color 0.2s, background 0.2s !important;
+}
+.nav-afspraak:hover {
+  border-color: rgba(255,255,255,0.55) !important;
+  background: rgba(255,255,255,0.06) !important;
+  opacity: 1 !important;
+}
+
+/* Hamburger (mobiel) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+  padding: 4px 0;
+}
+.nav-toggle span {
+  display: block;
+  height: 1px;
+  background: var(--text);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+@media (max-width: 820px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: rgba(10,10,10,0.98);
+    padding: 2rem var(--px) 2.5rem;
+    gap: 1.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-toggle { display: flex; }
+}
+
+/* ─── PAGINA-HEADER (binnenste pagina's) ──────────────────── */
+.page-header {
+  padding-top: calc(4.5rem + clamp(4rem, 8vh, 6rem));
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--border);
+}
+.page-header .label { margin-bottom: 0.75rem; }
+
+/* ─── SECTIES ─────────────────────────────────────────────── */
+section {
+  padding-block: clamp(5rem, 10vw, 8rem);
+}
+.section-header {
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.section-header .label { margin-bottom: 0.75rem; }
+
+/* ─── SCROLL REVEAL ───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.72s ease, transform 0.72s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+
+/* ─── STATS BAR ───────────────────────────────────────────── */
+.stats-bar {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.stats-bar::-webkit-scrollbar { display: none; }
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 1.5rem clamp(1.5rem, 3.5vw, 3.5rem);
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-d);
+  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+.stat-lbl {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ─── ARTIESTENKAART ──────────────────────────────────────── */
+.artist-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  border-top: 1px solid var(--border);
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+.artist-card:last-child { border-bottom: 1px solid var(--border); }
+
+/* Gespiegelde variant */
+.artist-card.flip .artist-img-wrap { order: 2; }
+.artist-card.flip .artist-info     { order: 1; }
+
+.artist-img-wrap { overflow: hidden; }
+.artist-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.artist-card:hover .artist-img { transform: scale(1.035); }
+
+/* Memoriam-variant: foto in grijswaarden */
+.artist-img.memorial {
+  filter: grayscale(1);
+  opacity: 0.75;
+}
+
+.artist-info {
+  padding: clamp(2rem, 5vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.artist-stijl {
+  font-family: var(--font-d);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+.artist-naam {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin-bottom: 1.75rem;
+}
+.artist-naam.dim { color: var(--text-muted); }
+
+.artist-bio {
+  font-size: clamp(1rem, 1.1vw, 1.1rem);
+  color: rgba(237,232,224,0.72);
+  max-width: 38ch;
+  margin-bottom: 2.25rem;
+}
+.artist-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-d);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.3rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.artist-ig:hover { color: var(--text); border-color: var(--text-muted); }
+.artist-ig:focus-visible { outline: 1px solid var(--text); }
+
+/* In memoriam-markering */
+.artist-memoriam-badge {
+  display: inline-block;
+  font-family: var(--font-d);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 780px) {
+  .artist-card {
+    grid-template-columns: 1fr;
+  }
+  .artist-card.flip .artist-img-wrap,
+  .artist-card.flip .artist-info { order: unset; }
+  .artist-info { padding: 1.5rem 0; }
+  .artist-img { aspect-ratio: 4 / 3; }
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: #080808;
+  border-top: 1px solid var(--border);
+  padding-block: 3.5rem 2rem;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand { display: flex; flex-direction: column; gap: 1rem; }
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.footer-logo-img {
+  height: 52px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+.footer-brand-name {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.footer-tagline {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-dim);
+}
+.footer-addr {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+.footer-addr a {
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.footer-addr a:hover { border-color: var(--text-muted); }
+
+.footer-col-title {
+  font-family: var(--font-d);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-links a {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-links a:focus-visible { outline: 1px solid var(--text); outline-offset: 3px; }
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy {
+  font-family: var(--font-d);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+}
+
+@media (max-width: 760px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ─── FOCUS ───────────────────────────────────────────────── */
+:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* ─── NAV JS-SCRIPT ───────────────────────────────────────── */
+/* Nav scroll — via JS class .solid */
